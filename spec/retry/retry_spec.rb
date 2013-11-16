@@ -1,12 +1,12 @@
 require "spec_helper"
 
 describe Retry do
-  describe "with_wait" do
+  describe "_with_options" do
     it "retries if the correct exception is thrown" do
       Retry.should_receive(:sleep).once
 
       count = 0
-      Retry.with_wait(DummyError, 1, 1, true) do
+      Retry._with_options(DummyError, 1, 1, true) do
         count += 1
         raise DummyError if count == 1
       end
@@ -15,7 +15,7 @@ describe Retry do
 
     it "lets the exception propogate if it does not match" do
       expect do
-        Retry.with_wait(DummyError, 1, 1, true) do
+        Retry._with_options(DummyError, 1, 1, true) do
           raise
         end
       end.to raise_error
@@ -26,7 +26,7 @@ describe Retry do
       Retry.should_receive(:sleep).with(4).once
 
       count = 0
-      Retry.with_wait(DummyError, 2, 2, true) do
+      Retry._with_options(DummyError, 2, 2, true) do
         count += 1
         raise DummyError unless count == 3
       end
@@ -36,7 +36,7 @@ describe Retry do
       Retry.should_receive(:sleep).exactly(4).times
 
       count = 0
-      Retry.with_wait(DummyError, 4, 1, true) do
+      Retry._with_options(DummyError, 4, 1, true) do
         count += 1
         raise DummyError if count < 5
       end
@@ -48,7 +48,7 @@ describe Retry do
 
       count = 0
       expect do
-        Retry.with_wait(DummyError, 2, 1, true) do
+        Retry._with_options(DummyError, 2, 1, true) do
           count += 1
           raise DummyError if count < 4
         end
