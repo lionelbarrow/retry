@@ -11,7 +11,7 @@ module Retry
     end
   end
 
-  def self.with_linear_backoff(exception_class, retries, seconds_to_wait, &block)
+  def self.with_delay(exception_class, retries, seconds_to_wait, &block)
     with_wait(exception_class, retries, seconds_to_wait, false) do
       yield
     end

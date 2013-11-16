@@ -57,12 +57,12 @@ describe Retry do
     end
   end
 
-  describe "with_linear_backoff" do
+  describe "with_delay" do
     it "sleeps a constant amount of time between attempts" do
       Retry.should_receive(:sleep).with(1).exactly(3).times
 
       count = 0
-      Retry.with_linear_backoff(DummyError, 4, 1) do
+      Retry.with_delay(DummyError, 4, 1) do
         count += 1
         raise DummyError unless count == 4
       end
