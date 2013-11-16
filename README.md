@@ -22,7 +22,7 @@ end
 
 Sometimes you want to wait a bit before retrying. This example will retry twice, with a four second delay between each attempt:
 ```ruby
-Retry.with_linear_backoff(SomeError, 2, 4) do
+Retry.with_delay(SomeError, 2, 4) do
   some_func
 end
 ```
