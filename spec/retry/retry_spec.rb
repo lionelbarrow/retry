@@ -84,6 +84,17 @@ describe Retry do
     end
   end
 
+  describe "several_times" do
+    it "retries the specified number of times" do
+      count = 0
+      Retry.several_times(DummyError, 3) do
+        count += 1
+        raise DummyError unless count == 4
+      end
+      count.should == 4
+    end
+  end
+
   describe "on_exception" do
     it "retries once" do
       count = 0

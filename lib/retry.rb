@@ -5,6 +5,12 @@ module Retry
     end
   end
 
+  def self.several_times(exception_class, retries, &block)
+    with_wait(exception_class, retries, 0, false) do
+      yield
+    end
+  end
+
   def self.with_linear_backoff(exception_class, retries, seconds_to_wait, &block)
     with_wait(exception_class, retries, seconds_to_wait, false) do
       yield
