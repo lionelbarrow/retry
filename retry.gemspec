@@ -1,9 +1,8 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require File.expand_path('../lib/retry/version', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = "retry"
-  spec.version       = "0.0.1"
+  spec.version       = Retry::VERSION
   spec.authors       = ["lionelbarrow"]
   spec.email         = ["code@getbraintree.com"]
   spec.description   = "Provides generic functions for retry strategies."
