@@ -1,5 +1,7 @@
 # Retry
 
+[![Build Status](https://travis-ci.org/lionelbarrow/retry.png)](https://travis-ci.org/lionelbarrow/YOUR_PROJECT_NAME)
+
 A few functions for trying again when things don't go as planned.
 
 ### Usage
