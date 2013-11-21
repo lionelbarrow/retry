@@ -55,6 +55,12 @@ describe Retry do
       end.to raise_error(DummyError)
       count.should == 3
     end
+
+    it "propagates the block's return value" do
+      Retry._with_options(DummyError, 1, 1, true) do
+        3
+      end.should == 3
+    end
   end
 
   describe "with_delay" do
