@@ -26,12 +26,10 @@ module Retry
   def self._with_options(exception_class, retries, base_seconds, exponential_backoff, &block)
     retries.times do |attempt|
       begin
-        yield
+        return yield
       rescue exception_class
         sleep(base_seconds ** (attempt + 1)) if exponential_backoff
         sleep(base_seconds) unless exponential_backoff
-      else
-        return
       end
     end
     yield
