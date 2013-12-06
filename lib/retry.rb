@@ -1,4 +1,4 @@
-module Retry
+class Retry
   def self.on_exception(exception_class, &block)
     _with_options(exception_class, 1, 0, false, &block)
   end
