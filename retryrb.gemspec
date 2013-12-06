@@ -1,11 +1,11 @@
 require File.expand_path('../lib/retry/version', __FILE__)
 
 Gem::Specification.new do |spec|
-  spec.name          = "retry"
+  spec.name          = "retryrb"
   spec.version       = Retry::VERSION
   spec.authors       = ["lionelbarrow"]
-  spec.email         = ["code@getbraintree.com"]
-  spec.description   = "Provides generic functions for retry strategies."
+  spec.email         = ["lionelbarrow@gmail.com"]
+  spec.description   = "Provides a handful of generic functions for retry strategies."
   spec.summary       = "Provides generic functions for retry strategies."
   spec.homepage      = "https://www.github.com/lionelbarrow/retry"
   spec.license       = "MIT"
